@@ -82,7 +82,7 @@ def score_local_spend(
         role = st.get("step_role")
         v = local_spend_from_role(str(role) if role else None)
         cat = str(row.get("pass_category") or "unknown")
-        if cat in ("restaurant", "cafe"):
+        if cat in ("restaurant", "cafe", "local"):
             v = max(v, 0.92)
         elif cat == "experience":
             v = max(v, 0.58)

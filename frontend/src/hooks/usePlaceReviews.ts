@@ -25,13 +25,13 @@ export function usePlaceReviews() {
   const [error, setError] = useState<string | null>(null)
   const lastArgsRef = useRef<{ name: string; lat: number; lng: number; address: string } | null>(null)
 
-  const fetch = useCallback(async (name: string, lat: number, lng: number, address = '') => {
+  const fetch = useCallback(async (name: string, lat: number, lng: number, address = '', topReviews = 3) => {
     lastArgsRef.current = { name, lat, lng, address }
     setLoading(true)
     setError(null)
     try {
       const res = await window.fetch(
-        `/api/place-reviews?name=${encodeURIComponent(name)}&lat=${lat}&lng=${lng}&address=${encodeURIComponent(address)}&top_reviews=5`
+        `/api/place-reviews?name=${encodeURIComponent(name)}&lat=${lat}&lng=${lng}&address=${encodeURIComponent(address)}&top_reviews=${Math.max(1, Math.min(5, topReviews))}`
       )
       if (!res.ok) {
         setData(null)

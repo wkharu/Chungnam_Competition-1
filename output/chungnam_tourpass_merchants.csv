@@ -1,229 +1,237 @@
 ﻿city,merchant_name,category,benefit_type,address,phone,source_url,source_image,raw_text,confidence,needs_review
-서산시,서산 버드랜드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|관광지|서산 버드랜드,0.55,true
-서산시,천수만생태관광,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|관광지|천수만생태관광,0.55,true
-서산시,서산 버드랜드 카페체험(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|서산 버드랜드 카페체험(체험),0.55,true
-서산시,블라공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|블라공방,0.55,true
-서산시,마크라메 스튜디오 마레의감성,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|마크라메 스튜디오 마레의감성,0.55,true
-서산시,오월기획탐방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|오월기획탐방,0.55,true
-서산시,여미갤러리(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|여미갤러리(체험),0.55,true
-서산시,더프리저브,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|더프리저브,0.55,true
-서산시,서산모사 뜨개방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|서산모사 뜨개방,0.55,true
-서산시,꽃온공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|꽃온공방,0.55,true
-서산시,겹데담,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|겹데담,0.55,true
-서산시,종이그림,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|종이그림,0.55,true
-서산시,여미도예,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|체험|여미도예,0.55,true
-서산시,서산 버드랜드 카페체험(카페),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|카페|서산 버드랜드 카페체험(카페),0.55,true
-서산시,휴암미술관카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|카페|휴암미술관카페,0.55,true
-서산시,여미갤러리(카페),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|카페|여미갤러리(카페),0.55,true
-서산시,여가61,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|카페|여가61,0.55,true
-서산시,해뜨는마을,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서산시|카페|해뜨는마을,0.55,true
-천안시,아라리오갤러리,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|아라리오갤러리,0.55,true
-천안시,아름다운정원 화수목,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|아름다운정원 화수목,0.55,true
-천안시,1923역사관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|1923역사관,0.55,true
-천안시,새토화카페,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|새토화카페,0.55,true
-천안시,투데이이즈유어헬스데이,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|투데이이즈유어헬스데이,0.55,true
-천안시,이탈리아베네오강교육센터,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|이탈리아베네오강교육센터,0.55,true
-천안시,여행나눔한국,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|여행나눔한국,0.55,true
-천안시,탕세도씨 우리찻수,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|탕세도씨 우리찻수,0.55,true
-천안시,천안상록리조트상록랜드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|천안상록리조트상록랜드,0.55,true
-천안시,엠피놀이터,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|엠피놀이터,0.55,true
-천안시,페어링 에피소드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|페어링 에피소드,0.55,true
-천안시,Lets Craft 노드랩,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|관광지|Lets Craft 노드랩,0.55,true
-천안시,늘솜아트,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|체험|늘솜아트,0.55,true
-천안시,구씨,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|체험|구씨,0.55,true
-천안시,어린이트램,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|체험|어린이트램,0.55,true
-천안시,알릴공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|체험|알릴공방,0.55,true
-천안시,랜드마크 195,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|카페|랜드마크 195,0.55,true
-천안시,아산아트홀 카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|카페|아산아트홀 카페,0.55,true
-천안시,카페백금당 청수행정점,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|카페|카페백금당 청수행정점,0.55,true
-천안시,카페호두,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|카페|카페호두,0.55,true
-천안시,카페떡국 신부점,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|카페|카페떡국 신부점,0.55,true
-천안시,상록리조트,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|음식점|상록리조트,0.55,true
-천안시,그레이스튜디오,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|음식점|그레이스튜디오,0.55,true
-천안시,아우내힐링스테이,숙박,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|숙박|아우내힐링스테이,0.55,true
-천안시,라마다앙코르 바이 윈덤,숙박,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,천안시|숙박|라마다앙코르 바이 윈덤,0.55,true
-당진시,삽교호 함상공원해양테마,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|관광지|삽교호 함상공원해양테마,0.55,true
-당진시,순성미술관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|관광지|순성미술관,0.55,true
-당진시,아미미술관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|관광지|아미미술관,0.55,true
-당진시,면천읍성안 그 미술관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|관광지|면천읍성안 그 미술관,0.55,true
-당진시,앵무세상,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|관광지|앵무세상,0.55,true
-당진시,삽교호 자전거 터미널,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|체험|삽교호 자전거 터미널,0.55,true
-당진시,비품무인 드로잉스튜디오,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|체험|비품무인 드로잉스튜디오,0.55,true
-당진시,틈틈화분,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|체험|틈틈화분,0.55,true
-당진시,예인상회,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|체험|예인상회,0.55,true
-당진시,카페보니또 삽교천점,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|카페보니또 삽교천점,0.55,true
-당진시,카페로우,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|카페로우,0.55,true
-당진시,합덕역앞카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|합덕역앞카페,0.55,true
-당진시,아트바젤,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|아트바젤,0.55,true
-당진시,카페피어라,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|카페피어라,0.55,true
-당진시,아미루트,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|아미루트,0.55,true
-당진시,작은커피나무,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|작은커피나무,0.55,true
-당진시,빈스,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|빈스,0.55,true
-당진시,카페레몬가,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|카페레몬가,0.55,true
-당진시,커피박,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|카페|커피박,0.55,true
-당진시,맛태삼대마을,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|음식점|맛태삼대마을,0.55,true
-당진시,왜목제일횟집,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|음식점|왜목제일횟집,0.55,true
-당진시,순성브루어리,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,당진시|음식점|순성브루어리,0.55,true
-아산시,아산퍼스트빌리지공룡월드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|관광지|아산퍼스트빌리지공룡월드,0.55,true
-아산시,아산레일바이크,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|체험|아산레일바이크,0.55,true
-아산시,오월기획공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|체험|오월기획공방,0.55,true
-아산시,공방단디,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|체험|공방단디,0.55,true
-아산시,푸루삼점,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|체험|푸루삼점,0.55,true
-아산시,조은아한복,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|체험|조은아한복,0.55,true
-아산시,허그스(hugs),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|카페|허그스(hugs),0.55,true
-아산시,제이피스트로,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|카페|제이피스트로,0.55,true
-아산시,티팩스,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|카페|티팩스,0.55,true
-아산시,정호두,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|카페|정호두,0.55,true
-아산시,온기지디저트랩,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|음식점|온기지디저트랩,0.55,true
-아산시,그울린,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,아산시|음식점|그울린,0.55,true
-예산군,내포보부상촌,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|관광지|내포보부상촌,0.55,true
-예산군,제이드플라워 갤러리,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|관광지|제이드플라워 갤러리,0.55,true
-예산군,아그로랜드 태신목장,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|관광지|아그로랜드 태신목장,0.55,true
-예산군,꽃차다락방,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|관광지|꽃차다락방,0.55,true
-예산군,꿈채려이야기,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|체험|꿈채려이야기,0.55,true
-예산군,고요,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|체험|고요,0.55,true
-예산군,오색꽃차치유농원,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|체험|오색꽃차치유농원,0.55,true
-예산군,빗들로 18,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|체험|빗들로 18,0.55,true
-예산군,세라믹 아트 공작소,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|체험|세라믹 아트 공작소,0.55,true
-예산군,해미트커피마켓,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|카페|해미트커피마켓,0.55,true
-예산군,Yes mountain,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|카페|Yes mountain,0.55,true
-예산군,예산장,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|음식점|예산장,0.55,true
-예산군,삽교 곱창거리 곱창인가,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|음식점|삽교 곱창거리 곱창인가,0.55,true
-예산군,예산사과빵상회,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|음식점|예산사과빵상회,0.55,true
-예산군,로컬푸드소 고로집,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|음식점|로컬푸드소 고로집,0.55,true
-예산군,예가편예산황토사과,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|음식점|예가편예산황토사과,0.55,true
-예산군,백세호텔,숙박,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,예산군|숙박|백세호텔,0.55,true
-홍성군,국립충남기상과학관,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|국립충남기상과학관,0.4,true
-홍성군,어울노의 집,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|어울노의 집,0.4,true
-홍성군,아기농장,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|아기농장,0.4,true
-홍성군,도깨비노리터,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|도깨비노리터,0.4,true
-홍성군,해피팜,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|해피팜,0.4,true
-홍성군,목공소(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|목공소(체험),0.55,true
-홍성군,흙빚는 도자기 공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|흙빚는 도자기 공방,0.55,true
-홍성군,한포인트랩,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|한포인트랩,0.4,true
-홍성군,호호공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|호호공방,0.55,true
-홍성군,대박퀴즈,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|대박퀴즈,0.4,true
-홍성군,동그라미교실,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|동그라미교실,0.55,true
-홍성군,리본,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|리본,0.4,true
-홍성군,육아쓰공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|육아쓰공방,0.55,true
-홍성군,쿠킹다이어리,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|쿠킹다이어리,0.55,true
-홍성군,홍성제과제빵학원,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|홍성제과제빵학원,0.55,true
-홍성군,목공소(부엌),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|체험|목공소(부엌),0.55,true
-홍성군,피나아트,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|피나아트,0.4,true
-홍성군,이히,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|이히,0.4,true
-홍성군,내포예예,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|내포예예,0.4,true
-홍성군,조경예술관광농원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|관광지|조경예술관광농원,0.55,true
-홍성군,프롬어인,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|프롬어인,0.4,true
-홍성군,학계문화디자인,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,홍성군|확인필요|학계문화디자인,0.4,true
-태안군,태안국제원예치유박람회,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|태안국제원예치유박람회,0.55,true
-태안군,천리포수목원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|천리포수목원,0.55,true
-태안군,네이처월드관광농원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|네이처월드관광농원,0.55,true
-태안군,팜카밀레,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|확인필요|팜카밀레,0.4,true
-태안군,별똥별 하늘공원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|별똥별 하늘공원,0.55,true
-태안군,오마이갤러리,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|오마이갤러리,0.55,true
-태안군,안면도 쥬라기 박물관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|안면도 쥬라기 박물관,0.55,true
-태안군,더 마나나,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|확인필요|더 마나나,0.4,true
-태안군,더벨롭,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|확인필요|더벨롭,0.4,true
-태안군,조아나리,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|체험|조아나리,0.55,true
-태안군,꿈꾸는달님도자기,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|체험|꿈꾸는달님도자기,0.55,true
-태안군,안면도 쥬라기 박물관 체험,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|체험|안면도 쥬라기 박물관 체험,0.55,true
-태안군,안면도 쥬라기 박물관 미디어영상관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|관광지|안면도 쥬라기 박물관 미디어영상관,0.55,true
-태안군,아로마 공방,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|체험|아로마 공방,0.55,true
-태안군,서림상회,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|확인필요|서림상회,0.4,true
-태안군,안면도 쥬라기 박물관 뮤지엄샵,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,태안군|확인필요|안면도 쥬라기 박물관 뮤지엄샵,0.4,true
-서천군,국립생태원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|관광지|국립생태원,0.55,true
-서천군,에코랜드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|관광지|에코랜드,0.55,true
-서천군,테라브릭(어린이경험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|체험|테라브릭(어린이경험),0.55,true
-서천군,물이름 생태체험학습센터,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|확인필요|물이름 생태체험학습센터,0.4,true
-서천군,서천물버들치유마을,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|확인필요|서천물버들치유마을,0.4,true
-서천군,삼화양조장,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|확인필요|삼화양조장,0.4,true
-서천군,샐러드담다,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|확인필요|샐러드담다,0.4,true
-서천군,미서전통유과,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,서천군|확인필요|미서전통유과,0.4,true
-서천군,"판교 책방, 눈맞추다",확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,"서천군|확인필요|판교 책방, 눈맞추다",0.4,true
-부여군,백제문화단지 + 백제군사박물관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|관광지|백제문화단지 + 백제군사박물관,0.55,true
-부여군,부소산성,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|관광지|부소산성,0.55,true
-부여군,부여중앙시장,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|확인필요|부여중앙시장,0.4,true
-부여군,드론앤톡톡,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|체험|드론앤톡톡,0.55,true
-부여군,홍성장시사람들 체험,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|체험|홍성장시사람들 체험,0.55,true
-부여군,가림성회(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|체험|가림성회(체험),0.55,true
-부여군,벨라숍,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|확인필요|벨라숍,0.4,true
-부여군,수북로 1945,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|확인필요|수북로 1945,0.4,true
-부여군,가림성회(카페),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|카페|가림성회(카페),0.55,true
-부여군,홍성장시사람들 승마여행,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|체험|홍성장시사람들 승마여행,0.55,true
-부여군,탑샐러드,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,부여군|확인필요|탑샐러드,0.4,true
-보령시,우청포카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|우청포카페,0.55,true
-보령시,보령석탄박물관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|관광지|보령석탄박물관,0.55,true
-보령시,성주산자연휴양림,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|관광지|성주산자연휴양림,0.55,true
-보령시,바둑이네 동물원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|관광지|바둑이네 동물원,0.55,true
-보령시,대천브루어리(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|체험|대천브루어리(체험),0.55,true
-보령시,우유창고(체험),체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|체험|우유창고(체험),0.55,true
-보령시,스킨포레스트,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|확인필요|스킨포레스트,0.4,true
-보령시,카페장은리,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|카페장은리,0.55,true
-보령시,카페담소,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|카페담소,0.55,true
-보령시,원산도커피,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|원산도커피,0.55,true
-보령시,우유창고(카페),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|우유창고(카페),0.55,true
-보령시,보령머드화장품(직영점),확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|확인필요|보령머드화장품(직영점),0.4,true
-보령시,대천브루어리 수제맥주 양조장&펍(카페),카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|카페|대천브루어리 수제맥주 양조장&펍(카페),0.55,true
-보령시,대천아빠와 with 대천브루어리,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|확인필요|대천아빠와 with 대천브루어리,0.4,true
-보령시,마레 with 대천브루어리,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,보령시|확인필요|마레 with 대천브루어리,0.4,true
-공주시,어린이 감성체험장,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|체험|어린이 감성체험장,0.55,true
-공주시,새벽가,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|확인필요|새벽가,0.4,true
-공주시,러리플라워,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|확인필요|러리플라워,0.4,true
-공주시,카페 윈바우,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|카페|카페 윈바우,0.55,true
-공주시,캐슬1477,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|확인필요|캐슬1477,0.4,true
-공주시,손수 만든 작은 상점,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|확인필요|손수 만든 작은 상점,0.4,true
-공주시,재원다방,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|카페|재원다방,0.55,true
-공주시,기와이네 국수,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|음식점|기와이네 국수,0.55,true
-공주시,한옥1964,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,공주시|확인필요|한옥1964,0.4,true
-논산시,선샤인랜드(밀리터리체험관),관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|관광지|선샤인랜드(밀리터리체험관),0.55,true
-논산시,지산농원,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|지산농원,0.4,true
-논산시,종이문화재단 논산교육원,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|체험|종이문화재단 논산교육원,0.55,true
-논산시,세라진스튜디오,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|세라진스튜디오,0.4,true
-논산시,일편미나리,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|일편미나리,0.4,true
-논산시,부원플레이스 힐링연계공원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|관광지|부원플레이스 힐링연계공원,0.55,true
-논산시,심스커피,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|심스커피,0.55,true
-논산시,카페루니,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|카페루니,0.55,true
-논산시,어드레스&플도넛,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|어드레스&플도넛,0.55,true
-논산시,노성산성in카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|노성산성in카페,0.55,true
-논산시,탑정호 in 카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|탑정호 in 카페,0.55,true
-논산시,된장포 WACU,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|된장포 WACU,0.4,true
-논산시,금성다방,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|카페|금성다방,0.55,true
-논산시,가야곡 돌솥쌈밥,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|음식점|가야곡 돌솥쌈밥,0.55,true
-논산시,금복로45,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|금복로45,0.4,true
-논산시,따뜻한 밥상,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|음식점|따뜻한 밥상,0.55,true
-논산시,길위에 반하다,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,논산시|확인필요|길위에 반하다,0.4,true
-금산군,하늘공방&고파스토리,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|체험|하늘공방&고파스토리,0.55,true
-금산군,금실,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|금실,0.4,true
-금산군,바우나비랜드,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|관광지|바우나비랜드,0.55,true
-금산군,장안스포츠센터,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|장안스포츠센터,0.4,true
-금산군,도자기공방나무별,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|체험|도자기공방나무별,0.55,true
-금산군,블링바이올렛,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|블링바이올렛,0.4,true
-금산군,나르샤의실,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|나르샤의실,0.4,true
-금산군,루체아의 뜰,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|루체아의 뜰,0.4,true
-금산군,내재,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|내재,0.4,true
-금산군,새미학기원,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|확인필요|새미학기원,0.4,true
-금산군,삼신식당,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|음식점|삼신식당,0.55,true
-금산군,INK 관광호텔,숙박,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,금산군|숙박|INK 관광호텔,0.55,true
-청양군,고운식물원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|고운식물원,0.55,true
-청양군,백제문화체험박물관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|백제문화체험박물관,0.55,true
-청양군,칠갑산천문대스타파크,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|칠갑산천문대스타파크,0.55,true
-청양군,온직다원,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|온직다원,0.4,true
-청양군,숲속향기카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|카페|숲속향기카페,0.55,true
-청양군,덴오브마운틴,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|덴오브마운틴,0.4,true
-청양군,카페 꽃이피어나는자리,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|카페|카페 꽃이피어나는자리,0.55,true
-청양군,애플카페,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|카페|애플카페,0.55,true
-청양군,옹기유황방,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|옹기유황방,0.4,true
-청양군,밴관,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|밴관,0.4,true
-청양군,칠갑산 청정 한우타운,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|음식점|칠갑산 청정 한우타운,0.55,true
-청양군,알프스글램핑,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|알프스글램핑,0.4,true
-청양군,백제문화자연사박물관,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|백제문화자연사박물관,0.55,true
-청양군,어린이 백제 체험관,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|체험|어린이 백제 체험관,0.55,true
-청양군,별아래,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|별아래,0.4,true
-청양군,카페 미스터브리즈,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|카페|카페 미스터브리즈,0.55,true
-청양군,뒤로책방,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|뒤로책방,0.4,true
-청양군,이호갤러리,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|이호갤러리,0.55,true
-청양군,카페 신동,카페,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|카페|카페 신동,0.55,true
-청양군,청양고추문화공원,관광지,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|관광지|청양고추문화공원,0.55,true
-청양군,메아리스튜디오,체험,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|체험|메아리스튜디오,0.55,true
-청양군,포포스토리,확인필요,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|확인필요|포포스토리,0.4,true
-청양군,청양고덕갈비,음식점,확인필요,,,,tourpass_map_01.png;tourpass_map_02.png,청양군|음식점|청양고덕갈비,0.55,true
+서산시,서산 버드랜드,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|관광지|서산 버드랜드,0.78,false
+서산시,서산 버드랜드 카페체험,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|서산 버드랜드 카페체험,0.78,false
+서산시,천수만생태관광,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|천수만생태관광,0.78,false
+서산시,올리공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|올리공방,0.78,false
+서산시,마크라메 스튜디오 미래의감성,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|마크라메 스튜디오 미래의감성,0.78,false
+서산시,여미갤러리,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|여미갤러리,0.78,false
+서산시,더프라미스,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|더프라미스,0.78,false
+서산시,서산모사 뜨개방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|서산모사 뜨개방,0.78,false
+서산시,꽃은공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|꽃은공방,0.78,false
+서산시,감태당,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|감태당,0.78,false
+서산시,종이그림,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|종이그림,0.78,false
+서산시,여미도예,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|여미도예,0.78,false
+서산시,사토와이예,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|사토와이예,0.78,false
+서산시,오딸기힐링팜,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|체험|오딸기힐링팜,0.78,false
+서산시,서산 버드랜드 카페체험,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|카페|서산 버드랜드 카페체험,0.78,false
+서산시,휴암미술관카페,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|카페|휴암미술관카페,0.78,false
+서산시,여미갤러리,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|카페|여미갤러리,0.78,false
+서산시,여기61,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|카페|여기61,0.78,false
+서산시,해쉬브라운,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|카페|해쉬브라운,0.78,false
+서산시,정호두,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|로컬시설|정호두,0.78,false
+서산시,그린린,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|로컬시설|그린린,0.78,false
+서산시,로컬안내소 고로컬,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서산시|로컬시설|로컬안내소 고로컬,0.78,false
+당진시,삽교호 함상공원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|관광지|삽교호 함상공원,0.78,false
+당진시,삽교호 해양테마체험관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|관광지|삽교호 해양테마체험관,0.78,false
+당진시,순성미술관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|관광지|순성미술관,0.78,false
+당진시,아미미술관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|관광지|아미미술관,0.78,false
+당진시,면천읍성안 그 미술관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|관광지|면천읍성안 그 미술관,0.78,false
+당진시,삽교호 자전거 터미널,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|체험|삽교호 자전거 터미널,0.78,false
+당진시,비움무인 드로잉스튜디오,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|체험|비움무인 드로잉스튜디오,0.78,false
+당진시,당진대일해운관광,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|체험|당진대일해운관광,0.78,false
+당진시,앵무세상,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|체험|앵무세상,0.78,false
+당진시,퐁퐁벌룬,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|체험|퐁퐁벌룬,0.78,false
+당진시,카페보니또 삽교천점,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|카페|카페보니또 삽교천점,0.78,false
+당진시,합덕백쌀카페,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|카페|합덕백쌀카페,0.78,false
+당진시,아트바젤,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|카페|아트바젤,0.78,false
+당진시,카페피어라,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|카페|카페피어라,0.78,false
+당진시,그레이스디포,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|로컬시설|그레이스디포,0.78,false
+당진시,왜목제일횟집,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|로컬시설|왜목제일횟집,0.78,false
+당진시,순성브루어리,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|로컬시설|순성브루어리,0.78,false
+당진시,왕매실마을,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,당진시|로컬시설|왕매실마을,0.78,false
+태안군,아리랜드,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|아리랜드,0.78,false
+태안군,선샤인랜드,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|선샤인랜드,0.78,false
+태안군,태안국제원예치유박람회,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|태안국제원예치유박람회,0.78,false
+태안군,천리포수목원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|천리포수목원,0.78,false
+태안군,바람아래관광농원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|바람아래관광농원,0.78,false
+태안군,팜카밀레,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|팜카밀레,0.78,false
+태안군,별똥별 하늘공원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|별똥별 하늘공원,0.78,false
+태안군,오마이갤러리,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|오마이갤러리,0.78,false
+태안군,안면도 쥬라기 박물관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|관광지|안면도 쥬라기 박물관,0.78,false
+태안군,안면도 쥬라기 박물관 체험,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|체험|안면도 쥬라기 박물관 체험,0.78,false
+태안군,안면도 쥬라기 박물관 미디어영상관,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|체험|안면도 쥬라기 박물관 미디어영상관,0.78,false
+태안군,이로운 공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|체험|이로운 공방,0.78,false
+태안군,카페 꽃이머무는자리,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|카페 꽃이머무는자리,0.78,false
+태안군,카페 미스터브리즈,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|카페 미스터브리즈,0.78,false
+태안군,위로책방,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|위로책방,0.78,false
+태안군,이호갤러리,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|이호갤러리,0.78,false
+태안군,카페 신몽,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|카페 신몽,0.78,false
+태안군,원산도커피,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|카페|원산도커피,0.78,false
+태안군,안면도 쥬라기 박물관 뮤지엄샵,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|로컬시설|안면도 쥬라기 박물관 뮤지엄샵,0.78,false
+태안군,이플카페,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|로컬시설|이플카페,0.78,false
+태안군,알프스글램핑,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,태안군|숙박|알프스글램핑,0.78,false
+홍성군,홍성도자문화 연구소,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|홍성도자문화 연구소,0.78,false
+홍성군,쿠킹티어리,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|쿠킹티어리,0.78,false
+홍성군,홍성제과제빵학원,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|홍성제과제빵학원,0.78,false
+홍성군,테라코타이야기공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|테라코타이야기공방,0.78,false
+홍성군,공실,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|공실,0.78,false
+홍성군,싸우라비검도,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|싸우라비검도,0.78,false
+홍성군,장안스포츠센터,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|장안스포츠센터,0.78,false
+홍성군,도자기공방나무별,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|도자기공방나무별,0.78,false
+홍성군,플링바이올렛,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|플링바이올렛,0.78,false
+홍성군,나리므의상실,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|체험|나리므의상실,0.78,false
+홍성군,아미루트,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|아미루트,0.78,false
+홍성군,허그스,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|허그스,0.78,false
+홍성군,제이비스트로,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|제이비스트로,0.78,false
+홍성군,티박스,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|티박스,0.78,false
+홍성군,메이트커피마켓,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|메이트커피마켓,0.78,false
+홍성군,마서면이좋다,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|카페|마서면이좋다,0.78,false
+홍성군,퍼니아트,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|로컬시설|퍼니아트,0.78,false
+홍성군,이미,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|로컬시설|이미,0.78,false
+홍성군,내포여여,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|로컬시설|내포여여,0.78,false
+홍성군,조양미술관협동조합,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|로컬시설|조양미술관협동조합,0.78,false
+홍성군,프롬아인,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,홍성군|로컬시설|프롬아인,0.78,false
+예산군,내포보부상촌,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|관광지|내포보부상촌,0.78,false
+예산군,제이드플라워 갤러리,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|관광지|제이드플라워 갤러리,0.78,false
+예산군,아그로랜드 태신목장,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|관광지|아그로랜드 태신목장,0.78,false
+예산군,국립농업기상과학관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|관광지|국립농업기상과학관,0.78,false
+예산군,이안아트팜,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|이안아트팜,0.78,false
+예산군,일원공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|일원공방,0.78,false
+예산군,오색꽃차치유농원,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|오색꽃차치유농원,0.78,false
+예산군,뭉치다락방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|뭉치다락방,0.78,false
+예산군,벚꽃로 18,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|벚꽃로 18,0.78,false
+예산군,옹기발효음식전시체험관,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|체험|옹기발효음식전시체험관,0.78,false
+예산군,이안아트팜 카페,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|카페|이안아트팜 카페,0.78,false
+예산군,카페라비아,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|카페|카페라비아,0.78,false
+예산군,커피박,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|카페|커피박,0.78,false
+예산군,예산당,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|로컬시설|예산당,0.78,false
+예산군,삽교 곱창거리 곱창인가,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|로컬시설|삽교 곱창거리 곱창인가,0.78,false
+예산군,예산사과빵상회,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|로컬시설|예산사과빵상회,0.78,false
+예산군,해가준예산황토사과,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|로컬시설|해가준예산황토사과,0.78,false
+예산군,온주자디저트랩,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,예산군|로컬시설|온주자디저트랩,0.78,false
+아산시,아산퍼스트빌리지공룡월드,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|관광지|아산퍼스트빌리지공룡월드,0.78,false
+아산시,도고 아트홀,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|관광지|도고 아트홀,0.78,false
+아산시,아산레일바이크,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|아산레일바이크,0.78,false
+아산시,오월랑공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|오월랑공방,0.78,false
+아산시,공방단디,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|공방단디,0.78,false
+아산시,푸루상점,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|푸루상점,0.78,false
+아산시,조은아한복,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|조은아한복,0.78,false
+아산시,꼼지락이야기,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|꼼지락이야기,0.78,false
+아산시,고요,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|체험|고요,0.78,false
+아산시,카페백묘국 청수청당점,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|카페백묘국 청수청당점,0.78,false
+아산시,카페호두,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|카페호두,0.78,false
+아산시,카페백묘국 신부점,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|카페백묘국 신부점,0.78,false
+아산시,미인상회,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|미인상회,0.78,false
+아산시,작은커피나무,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|작은커피나무,0.78,false
+아산시,빈스,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|카페|빈스,0.78,false
+아산시,복담다,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|로컬시설|복담다,0.78,false
+아산시,라마다앙코르 바이 원덤/윈덤,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,아산시|숙박|라마다앙코르 바이 원덤/윈덤,0.78,false
+천안시,아라리오갤러리,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|관광지|아라리오갤러리,0.78,false
+천안시,아름다운정원 화수목,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|관광지|아름다운정원 화수목,0.78,false
+천안시,1923역사관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|관광지|1923역사관,0.78,false
+천안시,천안상록리조트상록랜드,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|관광지|천안상록리조트상록랜드,0.78,false
+천안시,엄마놀이터,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|관광지|엄마놀이터,0.78,false
+천안시,투데이이즈유어벌스데이,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|투데이이즈유어벌스데이,0.78,false
+천안시,이일리 아로마오감교육센터,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|이일리 아로마오감교육센터,0.78,false
+천안시,아침나공화국,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|아침나공화국,0.78,false
+천안시,팀레드비 우리주짓수,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|팀레드비 우리주짓수,0.78,false
+천안시,페어링 에피소드,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|페어링 에피소드,0.78,false
+천안시,Lets Craft 노드랩,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|Lets Craft 노드랩,0.78,false
+천안시,늘솜아트,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|늘솜아트,0.78,false
+천안시,구시,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|체험|구시,0.78,false
+천안시,랜드마크 195,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|카페|랜드마크 195,0.78,false
+천안시,카페 찬바우,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|카페|카페 찬바우,0.78,false
+천안시,캐슬1477,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|카페|캐슬1477,0.78,false
+천안시,손수 만든 작은 상점,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|로컬시설|손수 만든 작은 상점,0.78,false
+천안시,제원다방,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|로컬시설|제원다방,0.78,false
+천안시,INK 관광호텔,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|숙박|INK 관광호텔,0.78,false
+천안시,아우내쉼플스테이,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|숙박|아우내쉼플스테이,0.78,false
+천안시,상록리조트,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,천안시|숙박|상록리조트,0.78,false
+공주시,고운식물원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|관광지|고운식물원,0.78,false
+공주시,세라믹 아트 공작소,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|세라믹 아트 공작소,0.78,false
+공주시,아가새농장,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|아가새농장,0.78,false
+공주시,도깨비노리터,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|도깨비노리터,0.78,false
+공주시,머리공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|머리공방,0.78,false
+공주시,흙담은 도자기 공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|흙담은 도자기 공방,0.78,false
+공주시,온포인트핏,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|온포인트핏,0.78,false
+공주시,호호공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|호호공방,0.78,false
+공주시,마마캔즈,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|마마캔즈,0.78,false
+공주시,동그랑작업실,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|동그랑작업실,0.78,false
+공주시,리멋,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|리멋,0.78,false
+공주시,옥이쓰공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|체험|옥이쓰공방,0.78,false
+공주시,Yes mountain,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|카페|Yes mountain,0.78,false
+공주시,삼화양조장,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|카페|삼화양조장,0.78,false
+공주시,샐러드담다,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|카페|샐러드담다,0.78,false
+공주시,카페단소,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|카페|카페단소,0.78,false
+공주시,학계애화덕피자,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|로컬시설|학계애화덕피자,0.78,false
+공주시,판교 책방,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|로컬시설|판교 책방,0.78,false
+공주시,눈맞추다,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|로컬시설|눈맞추다,0.78,false
+공주시,기범이네 국수,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|로컬시설|기범이네 국수,0.78,false
+공주시,한옥1954,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,공주시|숙박|한옥1954,0.78,false
+부여군,백제문화단지+백제문화역사관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|관광지|백제문화단지+백제문화역사관,0.78,false
+부여군,부소산성,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|관광지|부소산성,0.78,false
+부여군,부여동물원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|관광지|부여동물원,0.78,false
+부여군,백제문화체험박물관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|관광지|백제문화체험박물관,0.78,false
+부여군,어린이 백제 체험관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|관광지|어린이 백제 체험관,0.78,false
+부여군,홍산장시사람들 체험,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|체험|홍산장시사람들 체험,0.78,false
+부여군,별라솜,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|체험|별라솜,0.78,false
+부여군,수북로 1945,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|카페|수북로 1945,0.78,false
+부여군,가림상회,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|카페|가림상회,0.78,false
+부여군,카페장은리,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|카페|카페장은리,0.78,false
+부여군,홍산장시사람들 솜솜이빵,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|로컬시설|홍산장시사람들 솜솜이빵,0.78,false
+부여군,팜젤라또,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|로컬시설|팜젤라또,0.78,false
+부여군,백제호텔,숙박,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,부여군|숙박|백제호텔,0.78,false
+보령시,무창포타워,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|관광지|무창포타워,0.78,false
+보령시,보령석탄박물관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|관광지|보령석탄박물관,0.78,false
+보령시,성주산자연휴양림,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|관광지|성주산자연휴양림,0.78,false
+보령시,바둑이네 동물원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|관광지|바둑이네 동물원,0.78,false
+보령시,보령머드뷰티치유관,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|보령머드뷰티치유관,0.78,false
+보령시,대천브루어리,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|대천브루어리,0.78,false
+보령시,우유창고,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|우유창고,0.78,false
+보령시,스킨포레스트,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|스킨포레스트,0.78,false
+보령시,더 마리나,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|더 마리나,0.78,false
+보령시,더별꽃,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|더별꽃,0.78,false
+보령시,조이너리,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|조이너리,0.78,false
+보령시,꿈꾸는달님도자기,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|꿈꾸는달님도자기,0.78,false
+보령시,수련족욕카페,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|수련족욕카페,0.78,false
+보령시,카페에덴바,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|카페에덴바,0.78,false
+보령시,몽선부엉이체험마을,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|체험|몽선부엉이체험마을,0.78,false
+보령시,숲속향기카페,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|카페|숲속향기카페,0.78,false
+보령시,덴오브마운틴,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|카페|덴오브마운틴,0.78,false
+보령시,보령머드화장품,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|보령머드화장품,0.78,false
+보령시,성주사지 천년역사관,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|성주사지 천년역사관,0.78,false
+보령시,대천브루어리 수제맥주 양조장&피자펍,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|대천브루어리 수제맥주 양조장&피자펍,0.78,false
+보령시,대천아빠다 with 대천브루어리,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|대천아빠다 with 대천브루어리,0.78,false
+보령시,마케 with 대천브루어리,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|마케 with 대천브루어리,0.78,false
+보령시,서담상회,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,보령시|로컬시설|서담상회,0.78,false
+서천군,국립생태원,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서천군|관광지|국립생태원,0.78,false
+서천군,이용노의 집,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서천군|관광지|이용노의 집,0.78,false
+서천군,서천물버들체험휴양마을,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서천군|체험|서천물버들체험휴양마을,0.78,false
+서천군,어린이 감성체험장,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서천군|체험|어린이 감성체험장,0.78,false
+서천군,카페로우,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,서천군|카페|카페로우,0.78,false
+청양군,칠갑산천문대스타파크,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|관광지|칠갑산천문대스타파크,0.78,false
+청양군,목재문화자연사체험관,관광지,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|관광지|목재문화자연사체험관,0.78,false
+청양군,목재문화체험장,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|체험|목재문화체험장,0.78,false
+청양군,서작가,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|체험|서작가,0.78,false
+청양군,리리플라워,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|체험|리리플라워,0.78,false
+청양군,온기옥보쌈,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|온기옥보쌈,0.78,false
+청양군,빈관,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|빈관,0.78,false
+청양군,칠갑산 청정 한우타운,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|칠갑산 청정 한우타운,0.78,false
+청양군,청양고추빵공장,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|청양고추빵공장,0.78,false
+청양군,에이티엠스튜디오,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|에이티엠스튜디오,0.78,false
+청양군,포포스토리,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|포포스토리,0.78,false
+청양군,청양고덕갈비,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|청양고덕갈비,0.78,false
+청양군,새이학가든,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,청양군|로컬시설|새이학가든,0.78,false
+논산시,오감그리다논산점,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|오감그리다논산점,0.78,false
+논산시,지산농원,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|지산농원,0.78,false
+논산시,종이문화재단 논산교육원,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|종이문화재단 논산교육원,0.78,false
+논산시,세라인스튜디오,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|세라인스튜디오,0.78,false
+논산시,양촌와이너리,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|양촌와이너리,0.78,false
+논산시,드론앤톡톡,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|체험|드론앤톡톡,0.78,false
+논산시,투썸플레이스 벌곡휴게소점,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|투썸플레이스 벌곡휴게소점,0.78,false
+논산시,심스커피,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|심스커피,0.78,false
+논산시,카페워니,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|카페워니,0.78,false
+논산시,어드레스&붐도넛,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|어드레스&붐도넛,0.78,false
+논산시,루치아의 뜰,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|루치아의 뜰,0.78,false
+논산시,내재,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|카페|내재,0.78,false
+논산시,노성산성in가배,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|노성산성in가배,0.78,false
+논산시,탑정호 in가배,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|탑정호 in가배,0.78,false
+논산시,탑정호 WACU,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|탑정호 WACU,0.78,false
+논산시,금성다방,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|금성다방,0.78,false
+논산시,가이옥 돌솥설렁탕,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|가이옥 돌솥설렁탕,0.78,false
+논산시,금복도45,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|금복도45,0.78,false
+논산시,따뜻한 밥상,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,논산시|로컬시설|따뜻한 밥상,0.78,false
+금산군,갈비에 반하다,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,금산군|로컬시설|갈비에 반하다,0.78,false
+금산군,상신식당,로컬시설,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,금산군|로컬시설|상신식당,0.78,false
+계룡시,테라 도자기공방,체험,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,계룡시|체험|테라 도자기공방,0.62,true
+계룡시,카페1896,카페,확인필요,,,,user_text_2026-05-19;attached_tourpass_map,계룡시|카페|카페1896,0.62,true

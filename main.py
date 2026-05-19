@@ -303,10 +303,10 @@ async def place_reviews(
         default=5,
         ge=1,
         le=5,
-        description="Google 리뷰 노출 개수(최대 5, API 상한)",
+        description="Google 최신 리뷰 노출 개수(기본 3, 최대 5)",
     ),
 ):
-    """메인 추천 장소의 Google 리뷰 조회(searchText → Place Details 보강, 상위 N개)."""
+    """메인 추천 장소의 Google 리뷰 조회(searchText → Place Details 보강, 최신 N개)."""
     try:
         loop = asyncio.get_event_loop()
         tr = int(top_reviews)

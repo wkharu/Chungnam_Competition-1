@@ -13,10 +13,18 @@ from lib.distance import haversine
 from lib.intent_hints import _COMPANION_HINTS, _GOAL_TAG_HINTS, _tags_lower
 from lib.recommend_ui import build_ui_fields_for_destination
 from lib.course_view import build_consumer_course_view
-from lib.course_flow import build_outing_plan_places, infer_venue_kind, time_band_for_hour
+from lib.course_flow import (
+    build_outing_plan_places,
+    cafe_placeholder_dict,
+    infer_venue_kind,
+    meal_placeholder_dict,
+    time_band_for_hour,
+)
+from lib.tourpass_catalog import catalog_row_for_place
 from lib.itinerary_builder import build_itinerary_for_course, trip_start_datetime
 from lib.meal_context import build_meal_context, step_roles_for_meal_context
 from lib.places import fetch_continuation_candidates
+from lib.route_judge import judge_natural_route_roles
 from lib.venue_hours_policy import trip_context_consumer_note, trip_detail_band
 
 
@@ -77,26 +85,31 @@ def inject_meal_places_for_plan(
     anchor_lng: float,
     meal_ctx: Any,
 ) -> tuple[list[dict[str, Any]], bool]:
-    """식사 슬롯을 Places/공공 데이터로 채운다. 없으면 자리 표시자만 두고 플래그."""
-    from lib.course_flow import meal_placeholder_dict
-
+    """식당/카페 슬롯이 관광지로 흐트러지면 Places 후보나 안내 슬롯으로 바로잡는다."""
     out: list[dict[str, Any]] = [dict(p) for p in plan_raw]
     any_insufficient = False
-    verify = bool(
+    verify_meal = bool(
         meal_ctx is not None and getattr(meal_ctx, "requires_verified_meal_place", False)
     )
 
     for i, role in enumerate(roles):
-        if role != "meal" or i >= len(out):
+        if role not in ("meal", "cafe_rest", "late_night_rest") or i >= len(out):
             continue
+
         pl = out[i]
         nm = str(pl.get("name") or "").strip()
         vk = infer_venue_kind(pl) if nm else None
-        need_fetch = False
-        if verify:
-            need_fetch = (not nm) or bool(pl.get("meal_data_insufficient")) or vk != "meal"
+        is_placeholder = bool(pl.get("meal_data_insufficient"))
+
+        if role == "meal":
+            need_fetch = (not nm) or is_placeholder or (verify_meal and vk != "meal")
+            search_types = ["restaurant", "korean_restaurant", "chinese_restaurant", "meal_takeaway"]
+        elif role == "late_night_rest":
+            need_fetch = (not nm) or is_placeholder or vk not in ("meal", "cafe")
+            search_types = ["bar", "pub", "wine_bar", "restaurant"]
         else:
-            need_fetch = bool(pl.get("meal_data_insufficient"))
+            need_fetch = (not nm) or is_placeholder or vk != "cafe"
+            search_types = ["cafe", "coffee_shop", "bakery"]
 
         if not need_fetch:
             continue
@@ -109,16 +122,33 @@ def inject_meal_places_for_plan(
         rows, _, _, _ = fetch_continuation_candidates(
             lat,
             lng,
-            ["restaurant", "korean_restaurant", "chinese_restaurant", "meal_takeaway"],
+            search_types,
             max_results=10,
         )
-        if rows:
-            out[i] = _google_meal_row_to_dest(rows[0])
-        else:
+        used_names = {
+            str(p.get("name") or "").strip()
+            for j, p in enumerate(out)
+            if j != i and str(p.get("name") or "").strip()
+        }
+        picked_row = next(
+            (row for row in rows if str(row.get("name") or "").strip() not in used_names),
+            None,
+        )
+        if picked_row is not None:
+            out[i] = _google_meal_row_to_dest(picked_row)
+        elif role == "meal":
             out[i] = meal_placeholder_dict(lat, lng)
             any_insufficient = True
+        elif role == "late_night_rest":
+            out[i] = cafe_placeholder_dict(lat, lng)
+            out[i]["name"] = "야간 휴식 장소 데이터 부족"
+            out[i]["tags"] = ["술집", "야간", "휴식"]
+            out[i]["copy"] = "주변에서 영업 중인 술집/야간 휴식 장소를 찾지 못했어요. 지도 앱으로 영업 여부를 확인해 주세요."
+            any_insufficient = True
+        else:
+            out[i] = cafe_placeholder_dict(lat, lng)
+            any_insufficient = True
     return out, any_insufficient
-
 
 def intent_score_multiplier(dest: dict[str, Any], intent: dict[str, str]) -> float:
     """기존 종합 score에 곱해 의도에 맞게 순위만 가볍게 조정."""
@@ -200,6 +230,144 @@ def nearest_neighbor_order(
 
 def _pick_pool(adjusted: list[dict[str, Any]], pool_size: int = 24) -> list[dict[str, Any]]:
     return adjusted[: max(pool_size, 12)]
+
+
+def _pass_context_active(pass_context: dict[str, Any] | None) -> bool:
+    if not pass_context:
+        return False
+    return str(pass_context.get("tourpass_mode") or "").strip().lower() in ("1", "true", "yes", "on")
+
+
+def _tourpass_row(place: dict[str, Any]) -> dict[str, Any]:
+    if place.get("tourpass_available") is not None:
+        return {
+            "tourpass_available": place.get("tourpass_available"),
+            "tourpass_confidence": place.get("tourpass_confidence"),
+            "pass_category": place.get("pass_category"),
+            "pass_benefit_type": place.get("pass_benefit_type"),
+        }
+    return catalog_row_for_place(str(place.get("name") or ""))
+
+
+def _tourpass_place_score(place: dict[str, Any]) -> float:
+    row = _tourpass_row(place)
+    if row.get("tourpass_available") is not True:
+        return 0.0
+    base = float(row.get("tourpass_confidence") or 0.45)
+    cat = str(row.get("pass_category") or "unknown")
+    cat_bonus = {
+        "experience": 0.14,
+        "cafe": 0.12,
+        "local": 0.12,
+        "restaurant": 0.12,
+        "attraction": 0.10,
+        "accommodation": 0.04,
+    }.get(cat, 0.02)
+    return max(0.0, min(1.0, base + cat_bonus))
+
+
+def _tourpass_category(place: dict[str, Any]) -> str:
+    return str(_tourpass_row(place).get("pass_category") or "unknown")
+
+
+def _tourpass_priority_adjusted(adjusted: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for place in adjusted:
+        ps = _tourpass_place_score(place)
+        if ps <= 0:
+            out.append(place)
+            continue
+        p = {**place}
+        p["adjusted_score"] = round(float(p.get("adjusted_score") or p.get("score") or 0) + ps * 0.28, 4)
+        p["tourpass_course_priority_score"] = round(ps, 4)
+        out.append(p)
+    out.sort(key=lambda x: x.get("adjusted_score", 0), reverse=True)
+    return out
+
+
+def _nearest_tourpass_pick(
+    candidates: list[dict[str, Any]],
+    cur_lat: float,
+    cur_lng: float,
+    used: set[str],
+) -> dict[str, Any] | None:
+    best: dict[str, Any] | None = None
+    best_key: tuple[float, float] | None = None
+    for p in candidates:
+        nm = str(p.get("name") or "")
+        if not nm or nm in used:
+            continue
+        row = _tourpass_row(p)
+        if row.get("tourpass_available") is not True:
+            continue
+        coords = p.get("coords") or {}
+        try:
+            lat = float(coords.get("lat") or 0)
+            lng = float(coords.get("lng") or 0)
+        except (TypeError, ValueError):
+            continue
+        if lat == 0 and lng == 0:
+            continue
+        d = haversine(cur_lat, cur_lng, lat, lng)
+        key = (d, -_tourpass_place_score(p))
+        if best is None or key < best_key:  # type: ignore[operator]
+            best = p
+            best_key = key
+    return best
+
+
+def _promote_tourpass_plan_mix(
+    places: list[dict[str, Any]],
+    roles: list[str],
+    pool: list[dict[str, Any]],
+    user_lat: float,
+    user_lng: float,
+) -> tuple[list[dict[str, Any]], bool]:
+    if not places or not roles:
+        return places, False
+    used: set[str] = set()
+    out: list[dict[str, Any]] = []
+    changed = False
+    cur_lat, cur_lng = user_lat, user_lng
+
+    desired_by_role = {
+        "main_spot": ("attraction", "experience"),
+        "secondary_spot": ("experience", "attraction", "local"),
+        "meal": ("local", "restaurant", "cafe"),
+        "cafe_rest": ("cafe", "local"),
+        "finish": ("cafe", "local", "experience"),
+        "night_walk": ("cafe", "local", "attraction"),
+        "late_night_rest": ("cafe", "local", "restaurant"),
+    }
+
+    for i, role in enumerate(roles):
+        original = places[i] if i < len(places) else None
+        desired = desired_by_role.get(str(role), ("attraction", "experience", "cafe", "local"))
+        candidates = [p for p in pool if _tourpass_category(p) in desired]
+        pick = _nearest_tourpass_pick(candidates, cur_lat, cur_lng, used)
+        if pick is None:
+            pick = _nearest_tourpass_pick(pool, cur_lat, cur_lng, used)
+        if pick is None and original is not None and str(original.get("name") or "") not in used:
+            pick = original
+        if pick is None:
+            continue
+        nm = str(pick.get("name") or "")
+        used.add(nm)
+        out.append(pick)
+        if original is None or nm != str(original.get("name") or ""):
+            changed = True
+        coords = pick.get("coords") or {}
+        try:
+            cur_lat = float(coords.get("lat") or cur_lat)
+            cur_lng = float(coords.get("lng") or cur_lng)
+        except (TypeError, ValueError):
+            pass
+
+    return (out if out else places), changed
+
+
+def _tourpass_hits(places: list[dict[str, Any]]) -> int:
+    return sum(1 for p in places if _tourpass_row(p).get("tourpass_available") is True)
 
 
 def _is_indoor_heavy_candidate(d: dict[str, Any]) -> bool:
@@ -488,6 +656,14 @@ def serialize_place(
         "expectation_points": ui.get("expectation_points"),
         "enriched_tags": ui.get("enriched_tags"),
         "narrative_archetype": ui.get("narrative_archetype"),
+        "tourpass_available": dest.get("tourpass_available"),
+        "tourpass_confidence": dest.get("tourpass_confidence"),
+        "pass_category": dest.get("pass_category"),
+        "pass_benefit_type": dest.get("pass_benefit_type"),
+        "pass_value_level": dest.get("pass_value_level"),
+        "tourpass_city": dest.get("tourpass_city"),
+        "tourpass_catalog_name": dest.get("tourpass_catalog_name"),
+        "tourpass_match_type": dest.get("tourpass_match_type"),
     }
     for _k in (
         "story_summary",
@@ -558,7 +734,10 @@ def build_daytrip_payload(
     raw_recs = match_result["recommendations"]
 
     adjusted = with_adjusted_scores(raw_recs, intent)
-    pool = _pick_pool(adjusted, 28)
+    tourpass_active = _pass_context_active(pass_context)
+    if tourpass_active:
+        adjusted = _tourpass_priority_adjusted(adjusted)
+    pool = _pick_pool(adjusted, 44 if tourpass_active else 28)
     n = target_place_count(intent["duration"])
     n = min(n, len(pool)) if pool else 0
 
@@ -574,8 +753,20 @@ def build_daytrip_payload(
         trip_context.get("meal_preference") or intent.get("meal_preference") or "none"
     )
     mc = build_meal_context(trip_hour, trip_minute)
-    roles_ov = step_roles_for_meal_context(mc, intent["duration"])
-    use_meal_driven = roles_ov is not None
+    natural_route_mode = not tourpass_active
+    route_judge_decision: dict[str, Any] | None = None
+    if natural_route_mode:
+        route_judge_decision = judge_natural_route_roles(
+            meal_context=mc,
+            duration=intent["duration"],
+            weather=weather,
+            intent=intent,
+            pool_counts=_pool_category_counts(pool),
+        )
+        roles_ov = list(route_judge_decision.get("roles") or [])
+    else:
+        roles_ov = step_roles_for_meal_context(mc, intent["duration"])
+    use_meal_driven = natural_route_mode and roles_ov is not None
     meal_strict = mc.requires_verified_meal_place
     # 48% 이상이면 메인 코스를 실내 후보 풀에서 먼저 구성(50~60% ‘실내·혼합 우선’에 맞춤)
     rainy_main = pp >= 48.0
@@ -601,9 +792,21 @@ def build_daytrip_payload(
             exclude_names=set(),
             hour=trip_hour,
             roles_override=roles_ov,
-            skip_template_exceptions=use_meal_driven,
+            skip_template_exceptions=natural_route_mode or use_meal_driven,
             meal_substitution_mode="strict" if meal_strict else "default",
         )
+        if plan_a_raw and route_judge_decision and natural_route_mode:
+            plan_a_shape_reason = str(route_judge_decision.get("reason") or plan_a_shape_reason)
+        if plan_a_raw and tourpass_active:
+            plan_a_raw, _tp_changed = _promote_tourpass_plan_mix(
+                plan_a_raw,
+                plan_a_roles,
+                pool_for_a,
+                user_lat,
+                user_lng,
+            )
+            if _tp_changed:
+                plan_a_shape_reason = "tourpass_priority_mix"
         if plan_a_raw:
             plan_a_raw, meal_insufficient = inject_meal_places_for_plan(
                 plan_a_raw,
@@ -845,6 +1048,10 @@ def build_daytrip_payload(
                 "trip_hour": trip_hour,
                 "trip_minute": trip_minute,
                 "meal_phase": mc.phase,
+                "route_judge": route_judge_decision,
+                "tourpass_priority": bool(tourpass_active),
+                "plan_a_tourpass_hits": _tourpass_hits(plan_a_raw),
+                "plan_a_tourpass_total": len(plan_a_raw),
             },
         },
         "itinerary": top_itinerary,
@@ -868,7 +1075,13 @@ def build_daytrip_payload(
         "scores": scores,
         "total_fetched": match_result["total_fetched"],
         "recommendations": _enriched,
-        "main_scoring_model": match_result.get("main_scoring_model") or {},
+        "main_scoring_model": {
+            **(match_result.get("main_scoring_model") or {}),
+            "tourpass_course_priority": bool(tourpass_active),
+            "route_judge": route_judge_decision,
+            "plan_a_tourpass_hits": _tourpass_hits(plan_a_raw),
+            "plan_a_tourpass_total": len(plan_a_raw),
+        },
     }
     out.update(build_consumer_course_view(out))
     from lib.pass_quest import attach_pass_quest_to_payload

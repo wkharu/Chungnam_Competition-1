@@ -120,7 +120,7 @@ export default function CourseStepGoogleReviews({
         <div className="mt-2">
           {loading ? (
             <div className="space-y-2">
-              {[1, 2].map((i) => (
+              {[1, 2, 3].map((i) => (
                 <div key={i} className="h-10 rounded-lg bg-muted animate-pulse" />
               ))}
             </div>
@@ -131,7 +131,7 @@ export default function CourseStepGoogleReviews({
           ) : (
             <div className="rounded-xl bg-white/85 border border-border/35 px-2.5 py-2 mt-1.5 space-y-1.5">
               <p className="text-[10px] font-semibold text-foreground/90">
-                Google 리뷰 · 평점 높은 순 {data.reviews.length}개
+                Google 최신 리뷰 · {data.reviews.length}개
                 {data.review_count > data.reviews.length
                   ? ` (전체 ${data.review_count.toLocaleString()}건 중)`
                   : null}

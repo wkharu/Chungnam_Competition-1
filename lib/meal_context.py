@@ -49,7 +49,7 @@ def build_meal_context(hour: int, minute: int) -> MealContext:
     lu0 = _tod(11, 30)
     lu1 = _tod(13, 30)
     # 17:00~19:30 저녁
-    di0 = _tod(17, 0)
+    di0 = _tod(16, 30)
     di1 = _tod(19, 30)
     # 20:00~ 야간
     ev0 = _tod(20, 0)
@@ -115,13 +115,17 @@ def step_roles_for_meal_context(
     mc: MealContext,
     duration: str,
 ) -> list[str] | None:
-    """meal_context가 동선을 강하게 바꿀 때 역할 리스트. None이면 기본 시계 템플릿 사용."""
+    """현재 시간대에 맞는 자연 동선. 투어패스 OFF 기본 코스가 이 순서를 따른다."""
     d = str(duration).strip().lower()
     if d not in ("2h", "half-day", "full-day"):
         d = "half-day"
 
     if mc.phase == "evening_night":
-        return None
+        if d == "2h":
+            return ["night_walk", "late_night_rest"]
+        if d == "half-day":
+            return ["night_walk", "late_night_rest"]
+        return ["night_walk", "late_night_rest", "night_walk"]
 
     if mc.phase == "pre_lunch":
         if d == "2h":
@@ -138,11 +142,22 @@ def step_roles_for_meal_context(
         return ["meal", "main_spot", "secondary_spot", "cafe_rest"]
 
     if mc.phase == "dinner":
+        h, m = [int(x) for x in str(mc.clock_label).split(":", 1)]
+        meal_first = h > 18 or (h == 18 and m >= 0)
+        if meal_first:
+            if d == "2h":
+                return ["meal", "cafe_rest"]
+            if d == "half-day":
+                return ["meal", "main_spot", "cafe_rest"]
+            return ["meal", "main_spot", "secondary_spot", "cafe_rest"]
         if d == "2h":
             return ["main_spot", "meal"]
         if d == "half-day":
             return ["main_spot", "meal", "cafe_rest"]
         return ["main_spot", "meal", "secondary_spot", "cafe_rest"]
 
-    # afternoon_default: 낮 시간대는 기존 시간·강수 템플릿 유지
-    return None
+    if d == "2h":
+        return ["main_spot", "cafe_rest"]
+    if d == "half-day":
+        return ["main_spot", "meal", "cafe_rest"]
+    return ["main_spot", "meal", "secondary_spot", "cafe_rest"]

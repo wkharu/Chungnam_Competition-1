@@ -36,7 +36,7 @@ from lib.venue_hours_policy import (
     should_exclude_primary_recommendation,
     trip_detail_band,
 )
-from lib.tourpass_catalog import catalog_row_for_place
+from lib.tourpass_catalog import catalog_row_for_place, merge_pass_fields_into_place
 
 
 SIGUNGU_CODES = {
@@ -225,6 +225,38 @@ def _is_tourpass_merchant_place(name: str | None) -> bool:
     return row.get("tourpass_available") is True
 
 
+def _tourpass_fit_score(row: dict) -> float:
+    """투어패스 앱 모드의 설명 가능한 보정 점수."""
+    if row.get("tourpass_available") is not True:
+        return 0.18
+    base = float(row.get("tourpass_confidence") or 0.45)
+    cat = str(row.get("pass_category") or "unknown")
+    cat_bonus = {
+        "experience": 0.12,
+        "cafe": 0.10,
+        "local": 0.10,
+        "restaurant": 0.10,
+        "attraction": 0.08,
+        "accommodation": 0.04,
+    }.get(cat, 0.02)
+    benefit = str(row.get("pass_benefit_type") or "unknown")
+    benefit_bonus = {"free": 0.10, "discount": 0.07, "unknown": 0.03}.get(benefit, 0.0)
+    return max(0.0, min(1.0, base + cat_bonus + benefit_bonus))
+
+
+def _append_tourpass_tag(dest: dict, row: dict) -> dict:
+    out = merge_pass_fields_into_place(dest)
+    if row.get("tourpass_available") is True:
+        tags = [str(t) for t in (out.get("tags") or [])]
+        if "투어패스" not in tags:
+            tags = ["투어패스"] + tags
+        cat = str(row.get("pass_category") or "")
+        if cat == "local" and "로컬" not in tags:
+            tags.append("로컬")
+        out["tags"] = tags[:8]
+    return out
+
+
 # ── 최종 매칭 ──────────────────────────────────────────
 def match_from_api(
     weather: dict,
@@ -309,8 +341,17 @@ def match_from_api(
         components = adjust_components_for_precip_prob(
             components, dest, float(weather.get("precip_prob", 0))
         )
-        total = weighted_main_score(components)
-        contrib = contribution_points(components)
+        pass_row = catalog_row_for_place(dest.get("name"))
+        tourpass_fit = _tourpass_fit_score(pass_row)
+        if tourpass_mode:
+            components["tourpass_fit"] = round(tourpass_fit, 4)
+            # 기존 날씨·거리 설명력을 유지하되, 투어패스 앱 모드에서는 가맹 활용도를 눈에 띄게 반영한다.
+            total = round(min(1.0, weighted_main_score(components) * 0.78 + tourpass_fit * 0.22), 4)
+        else:
+            total = weighted_main_score(components)
+        contrib = contribution_points({k: v for k, v in components.items() if k in MAIN_WEIGHTS})
+        if tourpass_mode:
+            contrib["tourpass_fit"] = round(tourpass_fit * 0.22, 4)
         sm = (
             match_storytelling_for_destination(dest, story_records)
             if story_records
@@ -329,8 +370,9 @@ def match_from_api(
         raw_w = components["weather_fit"]
 
         opening = build_opening_feasibility_meta(dest, _trip_band)
+        dest_for_row = _append_tourpass_tag(dest, pass_row)
         row = {
-            **dest,
+            **dest_for_row,
             "score": total,
             "weather_score": round(raw_w, 3),
             "distance_score": dist_score,
@@ -372,9 +414,9 @@ def match_from_api(
         "total_fetched": len(destinations),
         "recommendations": results[:top_n],
         "main_scoring_model": {
-            "weights": dict(MAIN_WEIGHTS),
+            "weights": ({**dict(MAIN_WEIGHTS), **({"tourpass_fit": 22} if tourpass_mode else {})}),
             "intent_applied": intent_use,
-            "note": "휴리스틱 가중 합; 각 항목은 0~1 부분점수. 인원·일정 길이 보정 포함(ML 미사용).",
+            "note": "휴리스틱 가중 합; 각 항목은 0~1 부분점수. 투어패스 모드에서는 가맹 활용도 보정(tourpass_fit)을 추가 반영합니다.",
             "tourpass_mode": bool(tourpass_mode),
             "tourpass_merchant_pool_only": bool(
                 tourpass_mode and not tourpass_merchant_filter_relaxed

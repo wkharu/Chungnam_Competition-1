@@ -116,6 +116,8 @@ def _map_csv_category(raw: str | None) -> str:
         "관광지": "attraction",
         "체험": "experience",
         "카페": "cafe",
+        "로컬시설": "local",
+        "로컬": "local",
         "음식점": "restaurant",
         "숙박": "accommodation",
         "확인필요": "unknown",

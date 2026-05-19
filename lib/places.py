@@ -432,8 +432,14 @@ def fetch_continuation_candidates(
     반환: (결과, 사용한 반경 m, 완화 여부, 메모)
     """
     radii = (8000.0, 14000.0, 22000.0)
+    wants_restaurant = any(
+        t in {"restaurant", "korean_restaurant", "chinese_restaurant", "meal_takeaway"}
+        for t in included_types
+    )
 
     if not settings.google_places_key:
+        if not wants_restaurant:
+            return [], 0.0, True, "GOOGLE_PLACES_KEY 미설정"
         merged = _merge_public_restaurants([], lat, lng, max_results)
         if merged:
             return merged, 0.0, True, "GOOGLE_PLACES_KEY 미설정 · 공공 식당 데이터 보강"
@@ -445,7 +451,8 @@ def fetch_continuation_candidates(
         except Exception:
             raw = []
         results = _raw_to_results(raw)
-        results = _merge_public_restaurants(results, lat, lng, max_results)
+        if wants_restaurant:
+            results = _merge_public_restaurants(results, lat, lng, max_results)
         if results:
             extras: list[str] = []
             if any(p.get("source_type") == "citytour_api" for p in results):
@@ -464,7 +471,8 @@ def fetch_continuation_candidates(
             except Exception:
                 raw = []
             results = _raw_to_results(raw)
-            results = _merge_public_restaurants(results, lat, lng, max_results)
+            if any(t in {"restaurant", "meal_takeaway"} for t in relaxed):
+                results = _merge_public_restaurants(results, lat, lng, max_results)
             if results:
                 note = "후보 부족 시 검색 타입·반경 완화"
                 if any(p.get("source_type") == "citytour_api" for p in results):
@@ -561,7 +569,7 @@ def fetch_place_reviews(
     lng: float,
     address: str = "",
     *,
-    top_review_count: int = 5,
+    top_review_count: int = 3,
 ) -> dict:
     """
     장소명으로 Google Places searchText → 후보가 여러 개면 기준 좌표에 가장 가까운 곳 선택,
@@ -571,7 +579,7 @@ def fetch_place_reviews(
     (1) 5km locationRestriction (2) 5km locationBias (3) 12km locationBias (4) 지역 제한 없음
     순으로 완화한다.
 
-    UI용 상위 N개(기본 5, 최대 5 — API 상한에 맞춤).
+    UI용 최신 N개(기본 3, 최대 5 — API 상한에 맞춤).
     """
     if not settings.google_places_key:
         return {
@@ -587,7 +595,7 @@ def fetch_place_reviews(
             "places_status_message": "GOOGLE_PLACES_KEY가 설정되지 않았어요.",
         }
 
-    n_show = max(1, min(5, int(top_review_count or 5)))
+    n_show = max(1, min(5, int(top_review_count or 3)))
 
     key = f"review_{name}_{round(lat, 3)}_{round(lng, 3)}_{n_show}"
     cached = _cache_get(key)

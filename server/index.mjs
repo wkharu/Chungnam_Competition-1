@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Node 게이트웨이: Vite 빌드 SPA + 기상청/에어코리아(Node fetch) + FastAPI 프록시·선택적 자식 프로세스.
  *
  * 실행: npm start → http://127.0.0.1:3080
@@ -268,7 +268,7 @@ app.get('/api/place-reviews', async (req, res) => {
     const lat = parseOptionalFloat(req.query.lat)
     const lng = parseOptionalFloat(req.query.lng)
     const address = String(req.query.address || '')
-    const topReviews = Math.max(1, Math.min(5, Number(req.query.top_reviews || 5)))
+    const topReviews = Math.max(1, Math.min(5, Number(req.query.top_reviews || 3)))
     if (!name || lat == null || lng == null) {
       res.status(400).json({ detail: 'name, lat, lng required' })
       return
@@ -344,12 +344,17 @@ app.get('/api/place-reviews', async (req, res) => {
     }
 
     const src = (detail?.reviews?.length || 0) > (best.reviews?.length || 0) ? detail : best
-    const rawRevs = (src?.reviews || []).slice(0, topReviews).map(r => ({
-      author: r.authorAttribution?.displayName || '익명',
-      rating: r.rating || 0,
-      text: r.text?.text || '',
-      relative: r.relativePublishTimeDescription || '',
-    })).filter(r => r.text)
+    const rawRevs = (src?.reviews || [])
+      .slice()
+      .sort((a, b) => String(b.publishTime || '').localeCompare(String(a.publishTime || '')))
+      .slice(0, topReviews)
+      .map(r => ({
+        author: r.authorAttribution?.displayName || '익명',
+        rating: r.rating || 0,
+        text: r.text?.text || '',
+        relative: r.relativePublishTimeDescription || '',
+      }))
+      .filter(r => r.text)
 
     const firstPhoto = (src?.photos || best?.photos || [])[0]?.name
     const photoUrl = firstPhoto?.startsWith('places/') ? `/api/place-photo?name=${encodeURIComponent(firstPhoto)}&maxHeightPx=720` : null
@@ -534,3 +539,4 @@ app.listen(gatewayPort, gatewayHost, () => {
     )
   }, warnMs)
 })
+

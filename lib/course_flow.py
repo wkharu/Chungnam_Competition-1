@@ -40,19 +40,41 @@ def _norm_tags(d: dict[str, Any]) -> set[str]:
 
 
 def infer_venue_kind(d: dict[str, Any]) -> VenueKind:
-    """Places 데이터에서 식사/카페/관광(기본)을 휴리스틱으로 구분."""
+    """Places/공공/투어패스 데이터를 식당·카페·관광지로 안정 분류."""
     tags = _norm_tags(d)
     name = str(d.get("name") or "").lower()
-    if tags & _CAFE_TAGS or "카페" in name:
-        if tags & _MEAL_TAGS and "카페" not in name:
+    blob = " ".join([name, *tags])
+
+    cafe_words = ("카페", "커피", "coffee", "cafe", "bakery", "베이커리", "디저트", "차")
+    meal_words = (
+        "식당",
+        "한식",
+        "중식",
+        "일식",
+        "분식",
+        "레스토랑",
+        "restaurant",
+        "갈비",
+        "국수",
+        "곱창",
+        "설렁탕",
+        "보쌈",
+        "횟집",
+        "피자",
+        "맥주",
+        "브루어리",
+    )
+    bar_words = ("술집", "펍", "pub", "bar", "wine", "와인", "호프")
+
+    if any(w in blob for w in bar_words):
+        return "cafe"
+    if tags & _CAFE_TAGS or any(w in blob for w in cafe_words):
+        if (tags & _MEAL_TAGS or any(w in blob for w in meal_words)) and "카페" not in blob and "cafe" not in blob:
             return "meal"
         return "cafe"
-    if tags & _MEAL_TAGS:
-        return "meal"
-    if any(x in name for x in ("식당", "횟집", "한정식", "막국수", "국밥")):
+    if tags & _MEAL_TAGS or any(w in blob for w in meal_words):
         return "meal"
     return "spot"
-
 
 def meal_placeholder_dict(lat: float, lng: float) -> dict[str, Any]:
     """식사 후보를 채우지 못했을 때만 쓰는 자리 표시자(임의 장소명 생성 금지)."""
@@ -68,6 +90,25 @@ def meal_placeholder_dict(lat: float, lng: float) -> dict[str, Any]:
         "meal_data_insufficient": True,
         "copy": "주변에서 검증된 식당 목록을 찾지 못했어요. 지도 앱으로 직접 검색해 주세요.",
         "weather_weights": {"sunny": 0.5, "rainy": 0.5, "fine_dust_limit": "bad"},
+        "golden_hour_bonus": False,
+        "temp_range": {"min": -20, "max": 40},
+    }
+
+
+def cafe_placeholder_dict(lat: float, lng: float) -> dict[str, Any]:
+    """카페 후보를 채우지 못했을 때 슬롯 역할을 보존하는 안내용 장소."""
+    return {
+        "name": "카페 장소 데이터 부족",
+        "category": "indoor",
+        "tags": ["카페", "휴식"],
+        "coords": {"lat": float(lat), "lng": float(lng)},
+        "address": "",
+        "image": "",
+        "score": 0.0,
+        "weather_score": 0.5,
+        "meal_data_insufficient": True,
+        "copy": "주변에서 검증된 카페 목록을 찾지 못했어요. 지도 앱으로 직접 검색해 주세요.",
+        "weather_weights": {"sunny": 0.5, "rainy": 0.7, "fine_dust_limit": "bad"},
         "golden_hour_bonus": False,
         "temp_range": {"min": -20, "max": 40},
     }
@@ -378,35 +419,25 @@ def build_outing_plan_places(
 
         if pick is None:
             if role == "meal":
-                if meal_substitution_mode == "strict":
-                    pick = meal_placeholder_dict(cur_lat, cur_lng)
-                    role_use = "meal"
-                    shape_reason = shape_reason or "meal_slot_placeholder"
-                else:
+                if meal_substitution_mode != "strict":
                     pick = _pick_nearest_role_aware(
                         cafes, cur_lat, cur_lng, used, role="cafe_rest", night_mode=night_mode
                     )
                     if pick is not None:
                         role_use = "cafe_rest"
                         shape_reason = shape_reason or "meal_substituted_by_cafe"
-                    else:
-                        pick = _pick_nearest_role_aware(
-                            spots, cur_lat, cur_lng, used, role="secondary_spot", night_mode=night_mode
-                        )
-                        if pick is not None:
-                            role_use = "secondary_spot"
-                            shape_reason = shape_reason or "no_nearby_meal_candidates"
+                if pick is None:
+                    pick = meal_placeholder_dict(cur_lat, cur_lng)
+                    role_use = "meal"
+                    shape_reason = shape_reason or "meal_slot_placeholder"
             elif role == "cafe_rest":
                 pick = _pick_nearest_role_aware(
                     cafes, cur_lat, cur_lng, used, role="cafe_rest", night_mode=night_mode
                 )
                 if pick is None:
-                    pick = _pick_nearest_role_aware(
-                        spots, cur_lat, cur_lng, used, role="finish", night_mode=night_mode
-                    )
-                    if pick is not None:
-                        role_use = "finish"
-                        shape_reason = shape_reason or "no_nearby_meal_candidates"
+                    pick = cafe_placeholder_dict(cur_lat, cur_lng)
+                    role_use = "cafe_rest"
+                    shape_reason = shape_reason or "cafe_slot_placeholder"
             elif role == "finish":
                 pick = _pick_nearest_role_aware(
                     spots, cur_lat, cur_lng, used, role="finish", night_mode=night_mode
