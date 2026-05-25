@@ -19,6 +19,13 @@ function openStatusLabel(open: boolean | null | undefined): string {
   return '정보 없음'
 }
 
+function googleMapsSearchUrl(name: string, address?: string, placeId?: string): string {
+  const query = [name, address].filter(Boolean).join(' ')
+  const params = new URLSearchParams({ api: '1', query: query || name })
+  if (placeId) params.set('query_place_id', placeId)
+  return `https://www.google.com/maps/search/?${params.toString()}`
+}
+
 export function PlaceDetailModal({
   step,
   open,
@@ -61,7 +68,11 @@ export function PlaceDetailModal({
       ? step.reviewTags
       : ['가볍게 둘러보기', '현장 확인 추천']
 
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${lookup.lat},${lookup.lng}`
+  const matchedName = data?.place_name?.trim() || step.name
+  const matchedAddress = data?.place_address?.trim() || step.address
+  const mapsUrl =
+    data?.google_maps?.trim() ||
+    googleMapsSearchUrl(matchedName, matchedAddress, data?.place_id?.trim())
 
   return (
     <div
@@ -89,6 +100,11 @@ export function PlaceDetailModal({
         <div className="flex-1 overflow-y-auto px-4 pt-4 pb-8">
           <p className="text-[13px] font-bold text-teal-700">{step.role}</p>
           <h2 className="text-[22px] font-extrabold text-slate-950 leading-tight mt-1">{step.name}</h2>
+          {data?.place_name?.trim() && data.place_name.trim() !== step.name ? (
+            <p className="text-[12px] text-stone-500 font-semibold mt-1">
+              Google Maps 매칭: {data.place_name.trim()}
+            </p>
+          ) : null}
 
           <div className="flex flex-wrap gap-2 mt-3">
             {typeof rating === 'number' && rating > 0 ? (
@@ -131,7 +147,7 @@ export function PlaceDetailModal({
             className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white text-[15px] font-bold text-slate-950"
           >
             <ExternalLink className="w-4 h-4" />
-            지도 보기
+            지도에서 {matchedName} 보기
           </a>
 
           <p className="text-[13px] font-extrabold text-stone-800 mt-6 mb-2">리뷰에서 자주 나온 말</p>
@@ -185,7 +201,7 @@ export function PlaceDetailModal({
                   <li key={`${r.author}-${i}`} className="rounded-lg border border-slate-100 bg-white p-3">
                     <div className="flex justify-between text-[12px] font-bold text-stone-800">
                       <span>{r.author}</span>
-                      <span className="text-amber-700">★{r.rating}</span>
+                      <span className="text-amber-700">★ {r.rating}점</span>
                     </div>
                     <p className="text-[13px] text-stone-700 mt-1.5 leading-relaxed whitespace-pre-wrap">{text}</p>
                     <div className="flex justify-between items-center mt-1">

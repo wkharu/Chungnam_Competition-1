@@ -33,7 +33,7 @@ from lib.daytrip_planner import build_daytrip_payload
 from lib.intent_normalize import normalize_intent
 from lib.scoring import calc_weather_score
 
-app = FastAPI(title="충남 패스퀘스트 AI")
+app = FastAPI(title="떠나GO")
 
 _PASS_QUEST_LOG: list[dict] = []
 

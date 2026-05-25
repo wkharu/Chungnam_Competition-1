@@ -284,7 +284,7 @@ export default function ConsumerResultPage() {
           onClick={() => course.steps[0] && setDetailStep(course.steps[0])}
           className="w-full consumer-card-elevated overflow-hidden p-0 text-left active:scale-[0.99] transition-transform"
         >
-          <CourseHeroCover primarySrc={course.heroImage?.trim() ?? ''} />
+          <CourseHeroCover primarySrc={course.heroImage?.trim() ?? ''} fallbackStep={course.steps[0] ?? null} />
           <div className="p-4">
             <p className="text-[15px] font-bold text-[#3a2a20] leading-snug">{course.subtitle}</p>
             <div className="flex flex-wrap gap-2 mt-3 text-[13px] font-semibold text-[#7b6a5c]">

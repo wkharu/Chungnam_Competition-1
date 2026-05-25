@@ -52,3 +52,9 @@ web/node_modules/
 output/images/
 output/_*.txt
 output/_*.json
+
+# 제출/빌드 산출물
+*.apk
+*.zip
+render_deploy_stage_*/
+render_deploy_clean*/

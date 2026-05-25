@@ -53,7 +53,7 @@ function LatestReviewPreview({ step }: { step: ConsumerStep }) {
         {reviews.map((review, index) => (
           <p key={`${review.author}-${index}`} className="text-[12px] leading-relaxed text-[#5f5046]">
             <span className="font-bold text-[#3a2a20]">{review.author}</span>
-            <span className="text-amber-700 font-bold"> ★{review.rating}</span>
+            <span className="text-amber-700 font-bold"> ★ {review.rating}점</span>
             {review.relative ? <span className="text-[#9a8170]"> · {review.relative}</span> : null}
             <br />
             <span className="line-clamp-2">{review.text}</span>
@@ -66,9 +66,48 @@ function LatestReviewPreview({ step }: { step: ConsumerStep }) {
 
 export function CourseStepCard({ step, onOpen }: { step: ConsumerStep; onOpen: () => void }) {
   const [broken, setBroken] = useState(false)
+  const [placesPhoto, setPlacesPhoto] = useState<string | null>(null)
   const retryRef = useRef(0)
   const originalSrc = appImageSrc(step.image)
-  const src = broken ? COURSE_IMAGE_FALLBACK : originalSrc
+  const src = broken ? COURSE_IMAGE_FALLBACK : appImageSrc(placesPhoto || step.image)
+
+  useEffect(() => {
+    setBroken(false)
+    setPlacesPhoto(null)
+    retryRef.current = 0
+  }, [step.id, step.image])
+
+  useEffect(() => {
+    const initialSrc = appImageSrc(step.image)
+    if (step.image?.trim() && initialSrc !== COURSE_IMAGE_FALLBACK) return
+    const lat = step.lat
+    const lng = step.lng
+    const canFetch =
+      typeof lat === 'number' &&
+      typeof lng === 'number' &&
+      Number.isFinite(lat) &&
+      Number.isFinite(lng) &&
+      Math.abs(lat) > 1e-6 &&
+      Math.abs(lng) > 1e-6
+    if (!canFetch) return
+    let cancelled = false
+    const params = new URLSearchParams({
+      name: step.name,
+      lat: String(lat),
+      lng: String(lng),
+      address: step.address || '',
+      top_reviews: '1',
+    })
+    void fetch(`/api/place-reviews?${params.toString()}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then((body: { photo_url?: string | null } | null) => {
+        if (!cancelled && body?.photo_url) setPlacesPhoto(body.photo_url)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [step.address, step.image, step.lat, step.lng, step.name])
 
   return (
     <div className="rounded-2xl border border-[#eadfce] bg-[#fffdf8] p-2.5 active:scale-[0.99] transition">
@@ -83,7 +122,7 @@ export function CourseStepCard({ step, onOpen }: { step: ConsumerStep; onOpen: (
                 retryRef.current += 1
                 setTimeout(() => {
                   const img = e.target as HTMLImageElement
-                  if (img) img.src = originalSrc + (originalSrc.includes('?') ? '&_r=1' : '?_r=1')
+                  if (img) img.src = src + (src.includes('?') ? '&_r=1' : '?_r=1')
                 }, 1500)
               } else {
                 setBroken(true)

@@ -1,4 +1,5 @@
 import type { RecommendResponse } from '@/types'
+import { getActiveParticipantId, scopedStorageKey } from '@/lib/appUserSession'
 
 const STORAGE_KEY = 'chungnam_confirmed_course_v1'
 
@@ -38,18 +39,20 @@ function parseStored(raw: string | null): ConfirmedCourseState | null {
 
 export function loadConfirmedCourse(): ConfirmedCourseState | null {
   if (typeof window === 'undefined') return null
-  return parseStored(window.localStorage.getItem(STORAGE_KEY))
+  if (!getActiveParticipantId()) return null
+  return parseStored(window.localStorage.getItem(scopedStorageKey(STORAGE_KEY)))
 }
 
 export function saveConfirmedCourse(state: Omit<ConfirmedCourseState, 'version' | 'savedAt'>): boolean {
   if (typeof window === 'undefined') return false
+  if (!getActiveParticipantId()) return false
   const full: ConfirmedCourseState = {
     version: 1,
     savedAt: new Date().toISOString(),
     ...state,
   }
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(full))
+    window.localStorage.setItem(scopedStorageKey(STORAGE_KEY), JSON.stringify(full))
     window.dispatchEvent(new Event('chungnam-confirmed-course-changed'))
     return true
   } catch {
@@ -59,7 +62,8 @@ export function saveConfirmedCourse(state: Omit<ConfirmedCourseState, 'version' 
 
 export function clearConfirmedCourse(): void {
   if (typeof window === 'undefined') return
-  window.localStorage.removeItem(STORAGE_KEY)
+  if (!getActiveParticipantId()) return
+  window.localStorage.removeItem(scopedStorageKey(STORAGE_KEY))
   window.dispatchEvent(new Event('chungnam-confirmed-course-changed'))
 }
 

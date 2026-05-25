@@ -12,6 +12,11 @@ interface ReviewData {
   place_match_distance_m?: number | null
   website: string
   google_maps: string
+  place_id?: string
+  place_name?: string
+  place_address?: string
+  place_lat?: number | null
+  place_lng?: number | null
   open_now: boolean | null
   places_status?: 'ok' | 'missing_key' | 'request_failed' | 'no_match' | 'match_too_far'
   places_status_message?: string

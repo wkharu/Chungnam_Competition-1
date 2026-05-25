@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react'
 import { ImageOff } from 'lucide-react'
 import { appImageSrc, COURSE_IMAGE_FALLBACK } from '@/lib/courseImageFallback'
+import type { ConsumerStep } from '@/lib/consumerCourseTypes'
 
-export function CourseHeroCover({ primarySrc }: { primarySrc: string }) {
+export function CourseHeroCover({
+  primarySrc,
+  fallbackStep,
+}: {
+  primarySrc: string
+  fallbackStep?: ConsumerStep | null
+}) {
   const [src, setSrc] = useState(() => appImageSrc(primarySrc))
   const [showImg, setShowImg] = useState(true)
 
@@ -10,6 +17,42 @@ export function CourseHeroCover({ primarySrc }: { primarySrc: string }) {
     setSrc(appImageSrc(primarySrc))
     setShowImg(true)
   }, [primarySrc])
+
+  useEffect(() => {
+    const initialSrc = appImageSrc(primarySrc)
+    if (primarySrc.trim() && initialSrc !== COURSE_IMAGE_FALLBACK) return
+    if (!fallbackStep) return
+    const lat = fallbackStep.lat
+    const lng = fallbackStep.lng
+    const canFetch =
+      typeof lat === 'number' &&
+      typeof lng === 'number' &&
+      Number.isFinite(lat) &&
+      Number.isFinite(lng) &&
+      Math.abs(lat) > 1e-6 &&
+      Math.abs(lng) > 1e-6
+    if (!canFetch) return
+    let cancelled = false
+    const params = new URLSearchParams({
+      name: fallbackStep.name,
+      lat: String(lat),
+      lng: String(lng),
+      address: fallbackStep.address || '',
+      top_reviews: '1',
+    })
+    void fetch(`/api/place-reviews?${params.toString()}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then((body: { photo_url?: string | null } | null) => {
+        if (!cancelled && body?.photo_url) {
+          setSrc(appImageSrc(body.photo_url))
+          setShowImg(true)
+        }
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [fallbackStep, primarySrc])
 
   return (
     <div className="relative aspect-[16/10] w-full overflow-hidden bg-[linear-gradient(135deg,#efe6d8,#e8f3ee_58%,#e7eef8)]">

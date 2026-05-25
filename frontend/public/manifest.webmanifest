@@ -1,0 +1,29 @@
+{
+  "name": "떠나GO",
+  "short_name": "떠나GO",
+  "description": "날씨와 시간에 맞춰 충남 여행 코스를 추천하는 모바일 앱",
+  "lang": "ko-KR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffaf3",
+  "theme_color": "#ea580c",
+  "categories": ["travel", "lifestyle", "navigation"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 192x192 256x256 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "떠나GO 코스 추천",
+      "short_name": "코스 추천",
+      "url": "/",
+      "description": "현재 조건으로 충남 여행 코스를 추천받기"
+    }
+  ]
+}

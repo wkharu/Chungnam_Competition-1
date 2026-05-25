@@ -1,3 +1,5 @@
+import { scopedStorageKey } from '@/lib/appUserSession'
+
 const STORAGE_KEY = 'chungnam_user_geo_v1'
 const MAX_AGE_MS = 1000 * 60 * 30 // 30분마다 다시 측정 가능
 
@@ -10,7 +12,7 @@ export interface StoredUserGeo {
 export function readStoredUserGeo(): { lat: number; lng: number } | null {
   if (typeof window === 'undefined') return null
   try {
-    const raw = window.sessionStorage.getItem(STORAGE_KEY)
+    const raw = window.sessionStorage.getItem(scopedStorageKey(STORAGE_KEY))
     if (!raw) return null
     const j = JSON.parse(raw) as StoredUserGeo
     if (
@@ -33,7 +35,7 @@ export function writeStoredUserGeo(lat: number, lng: number): void {
   if (typeof window === 'undefined') return
   try {
     const payload: StoredUserGeo = { lat, lng, savedAt: Date.now() }
-    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
+    window.sessionStorage.setItem(scopedStorageKey(STORAGE_KEY), JSON.stringify(payload))
     window.dispatchEvent(new Event('chungnam-user-geo-changed'))
   } catch {
     /* ignore quota */

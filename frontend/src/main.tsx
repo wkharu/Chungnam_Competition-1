@@ -8,6 +8,9 @@ import CourseDetailPage from '@/pages/CourseDetailPage'
 import MoreCoursesPage from '@/pages/MoreCoursesPage'
 import ReconfigureCoursePage from '@/pages/ReconfigureCoursePage'
 import AdminPassQuestMockPage from '@/pages/AdminPassQuestMockPage'
+import { installApiFetchRewrite } from '@/lib/apiBase'
+
+installApiFetchRewrite()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -24,3 +27,9 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => undefined)
+  })
+}

@@ -38,7 +38,7 @@ const repoRoot = path.resolve(__dirname, '..')
 
 dotenv.config({ path: path.join(repoRoot, '.env') })
 
-const gatewayPort = Number(process.env.STACK_GATEWAY_PORT || 3080)
+const gatewayPort = Number(process.env.STACK_GATEWAY_PORT || process.env.PORT || 3080)
 
 const noSpawn =
   process.env.NO_SPAWN_PYTHON === '1' || process.env.SPAWN_PYTHON_BACKEND === '0'
@@ -64,6 +64,19 @@ const tourApiBase = (
 
 const app = express()
 let pythonChild = null
+
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    if (req.method === 'OPTIONS') {
+      res.status(204).end()
+      return
+    }
+  }
+  next()
+})
 
 function parseOptionalFloat(v) {
   if (v == null || v === '') return null
@@ -259,6 +272,7 @@ app.get('/api/place-reviews', async (req, res) => {
       res.json({
         rating: 0, review_count: 0, reviews: [], reviews_shown: 0,
         photo_url: null, website: '', google_maps: '', open_now: null,
+        place_id: '', place_name: '', place_address: '',
         places_status: 'missing_key',
         places_status_message: 'GOOGLE_PLACES_KEY가 설정되지 않았어요.',
       })
@@ -288,7 +302,7 @@ app.get('/api/place-reviews', async (req, res) => {
         headers: {
           'Content-Type': 'application/json',
           'X-Goog-Api-Key': key,
-          'X-Goog-FieldMask': 'places.id,places.displayName,places.rating,places.userRatingCount,places.reviews,places.photos,places.websiteUri,places.googleMapsUri,places.currentOpeningHours,places.location',
+          'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.reviews,places.photos,places.websiteUri,places.googleMapsUri,places.currentOpeningHours,places.location',
         },
         body: JSON.stringify(payload),
       })
@@ -297,35 +311,95 @@ app.get('/api/place-reviews', async (req, res) => {
       return j.places || []
     }
 
+    function displayName(place) {
+      const dn = place?.displayName
+      if (!dn) return ''
+      if (typeof dn === 'string') return dn.trim()
+      return String(dn.text || '').trim()
+    }
+    function haversineMeters(aLat, aLng, bLat, bLng) {
+      const r = 6371000
+      const toRad = (v) => v * Math.PI / 180
+      const p1 = toRad(aLat)
+      const p2 = toRad(bLat)
+      const dp = toRad(bLat - aLat)
+      const dl = toRad(bLng - aLng)
+      const x = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2
+      return 2 * r * Math.asin(Math.min(1, Math.sqrt(x)))
+    }
+    async function searchWithQuery(tq) {
+      const strategies = [
+        { maxResultCount: 3, locationRestriction: rect(5000) },
+        { maxResultCount: 5, locationBias: circle(5000) },
+        { maxResultCount: 5, locationBias: circle(12000) },
+        { maxResultCount: 5 },
+      ]
+      for (const s of strategies) {
+        const found = await searchText({
+          textQuery: tq,
+          languageCode: 'ko',
+          regionCode: 'KR',
+          ...s,
+        })
+        if (found.length) return found
+      }
+      return []
+    }
+    function pickClosest(list) {
+      let best = null
+      let bestDist = Infinity
+      for (const p of list || []) {
+        const loc = p.location || {}
+        const pLat = loc.latitude
+        const pLng = loc.longitude
+        if (pLat == null || pLng == null) continue
+        const d = haversineMeters(lat, lng, Number(pLat), Number(pLng))
+        if (d < bestDist) { bestDist = d; best = p }
+      }
+      return [best || list?.[0] || null, bestDist]
+    }
+
     const circle = (rm) => ({ circle: { center: { latitude: lat, longitude: lng }, radius: rm } })
     const rect = (rm) => {
       const dLat = rm / 111000
       const dLng = rm / (111000 * Math.max(0.01, Math.cos(lat * Math.PI / 180)))
       return { rectangle: { low: { latitude: lat - dLat, longitude: lng - dLng }, high: { latitude: lat + dLat, longitude: lng + dLng } } }
     }
-    let places =
-      await searchText({ textQuery, languageCode: 'ko', regionCode: 'KR', maxResultCount: 3, locationRestriction: rect(5000) }) ||
-      await searchText({ textQuery, languageCode: 'ko', regionCode: 'KR', maxResultCount: 5, locationBias: circle(5000) }) ||
-      await searchText({ textQuery, languageCode: 'ko', regionCode: 'KR', maxResultCount: 5, locationBias: circle(12000) }) ||
-      await searchText({ textQuery, languageCode: 'ko', regionCode: 'KR', maxResultCount: 5 })
+    let places = await searchWithQuery(textQuery)
     if (!places || !places.length) {
       const empty = {
         rating: 0, review_count: 0, reviews: [], reviews_shown: topReviews,
         photo_url: null, website: '', google_maps: '', open_now: null,
+        place_id: '', place_name: '', place_address: '',
         places_status: 'no_match', places_status_message: 'Google Places 검색 결과가 비어 있어요.',
       }
       res.json(empty)
       return
     }
 
-    // Pick closest place
-    let best = places[0], bestDist = Infinity
-    for (const p of places) {
-      const loc = p.location || {}
-      const pLat = loc.latitude, pLng = loc.longitude
-      if (pLat == null || pLng == null) continue
-      const d = Math.sqrt((pLat - lat) ** 2 + (pLng - lng) ** 2)
-      if (d < bestDist) { bestDist = d; best = p }
+    let [best, bestDist] = pickClosest(places)
+    const addrClean = address.replace('충청남도', '').trim()
+    if (addrClean.length >= 4 && (!Number.isFinite(bestDist) || bestDist > 4200)) {
+      const withAddress = await searchWithQuery(`${name} ${addrClean}`)
+      if (withAddress.length) {
+        const [addrBest, addrDist] = pickClosest(withAddress)
+        if (addrBest && (!Number.isFinite(bestDist) || addrDist < bestDist)) {
+          best = addrBest
+          bestDist = addrDist
+        }
+      }
+    }
+    if (!best || (Number.isFinite(bestDist) && bestDist > 5200)) {
+      const tooFar = {
+        rating: 0, review_count: 0, reviews: [], reviews_shown: topReviews,
+        photo_url: null, website: '', google_maps: '', open_now: null,
+        place_id: best?.id || '', place_name: displayName(best), place_address: best?.formattedAddress || '',
+        place_match_distance_m: Number.isFinite(bestDist) ? Math.round(bestDist) : null,
+        places_status: best ? 'match_too_far' : 'no_match',
+        places_status_message: best ? '검색된 Google 장소가 코스 좌표와 너무 멀어요.' : 'Google Places 검색 결과가 비어 있어요.',
+      }
+      res.json(tooFar)
+      return
     }
 
     // Place Details for richer reviews
@@ -336,7 +410,7 @@ app.get('/api/place-reviews', async (req, res) => {
         const dr = await fetch(`${root}/places/${encodeURIComponent(pid)}`, {
           headers: {
             'X-Goog-Api-Key': key,
-            'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,photos,websiteUri,googleMapsUri,currentOpeningHours',
+            'X-Goog-FieldMask': 'id,displayName,formattedAddress,location,rating,userRatingCount,reviews,photos,websiteUri,googleMapsUri,currentOpeningHours',
           },
         })
         if (dr.ok) detail = await dr.json()
@@ -369,7 +443,12 @@ app.get('/api/place-reviews', async (req, res) => {
       website: src?.websiteUri || '',
       google_maps: src?.googleMapsUri || '',
       open_now: openNow,
-      place_match_distance_m: bestDist < Infinity ? Math.round(bestDist * 111_000) : null,
+      place_id: src?.id || best?.id || '',
+      place_name: displayName(src) || displayName(best) || name,
+      place_address: src?.formattedAddress || best?.formattedAddress || address || '',
+      place_lat: src?.location?.latitude ?? best?.location?.latitude ?? null,
+      place_lng: src?.location?.longitude ?? best?.location?.longitude ?? null,
+      place_match_distance_m: bestDist < Infinity ? Math.round(bestDist) : null,
       places_status: 'ok',
       places_status_message: '',
     }
@@ -411,6 +490,32 @@ function backendProxy() {
     },
   })
 }
+
+app.get('/api/recommend', async (req, res) => {
+  const ac = new AbortController()
+  const to = setTimeout(() => ac.abort(), 90_000)
+  try {
+    const upstream = await fetch(`${backendBase}${req.originalUrl}`, {
+      method: 'GET',
+      headers: {
+        accept: req.get('accept') || 'application/json',
+      },
+      signal: ac.signal,
+    })
+    const body = Buffer.from(await upstream.arrayBuffer())
+    res.status(upstream.status)
+    res.type(upstream.headers.get('content-type') || 'application/json; charset=utf-8')
+    res.send(body)
+  } catch (e) {
+    const detail =
+      e?.name === 'AbortError'
+        ? '추천 생성 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.'
+        : `추천 백엔드 연결 실패: ${String(e?.message || e)}`
+    res.status(504).json({ detail })
+  } finally {
+    clearTimeout(to)
+  }
+})
 
 app.use(backendProxy())
 

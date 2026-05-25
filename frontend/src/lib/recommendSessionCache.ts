@@ -3,6 +3,7 @@
  * /result 진입 시 복원할 수 있도록 sessionStorage에 보관합니다.
  */
 import type { RecommendResponse } from '@/types'
+import { scopedStorageKey } from '@/lib/appUserSession'
 
 const K_CANON = 'passquest:recommend:canon_qs'
 const K_JSON = 'passquest:recommend:payload_json'
@@ -36,8 +37,8 @@ export function saveRecommendPayloadForResult(
 ): void {
   try {
     const canon = canonicalQueryString(resultQueryString)
-    sessionStorage.setItem(K_CANON, canon)
-    sessionStorage.setItem(K_JSON, JSON.stringify(data))
+    sessionStorage.setItem(scopedStorageKey(K_CANON), canon)
+    sessionStorage.setItem(scopedStorageKey(K_JSON), JSON.stringify(data))
   } catch {
     /* 용량 초과·비공개 모드 등 — 이후 location.state·재요청에 의존 */
   }
@@ -47,9 +48,9 @@ export function loadRecommendPayloadForResult(sp: URLSearchParams): RecommendRes
   if (sp.get('mock') === '1') return null
   try {
     const cur = canonicalTripSearchParams(sp)
-    const saved = sessionStorage.getItem(K_CANON)
+    const saved = sessionStorage.getItem(scopedStorageKey(K_CANON))
     if (!saved || saved !== cur) return null
-    const raw = sessionStorage.getItem(K_JSON)
+    const raw = sessionStorage.getItem(scopedStorageKey(K_JSON))
     if (!raw) return null
     const parsed = JSON.parse(raw) as RecommendResponse
     return isCurrentRecommendPayload(parsed) ? parsed : null

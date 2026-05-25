@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: chungnam-weather-tour
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    name: tteonago
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
     envVars:
       - key: TOUR_API_KEY
         sync: false
@@ -13,5 +13,5 @@ services:
         sync: false
       - key: GOOGLE_PLACES_KEY
         sync: false
-      - key: NODE_VERSION
-        value: 20.11.0
+      - key: PYTHON
+        value: python3
