@@ -57,7 +57,7 @@ const backendBase = (
 const distDir = path.join(repoRoot, 'frontend', 'dist')
 const hasDist = existsSync(path.join(distDir, 'index.html'))
 
-const BUILD_TAG = 'node-gateway-v1'
+const BUILD_TAG = 'node-gateway-cors-v2'
 const tourApiBase = (
   process.env.TOUR_BASE_URL || 'https://apis.data.go.kr/B551011/KorService2'
 ).replace(/\/$/, '')
@@ -66,14 +66,13 @@ const app = express()
 let pythonChild = null
 
 app.use((req, res, next) => {
-  if (req.path.startsWith('/api/')) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    if (req.method === 'OPTIONS') {
-      res.status(204).end()
-      return
-    }
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  res.setHeader('Vary', 'Origin')
+  if (req.method === 'OPTIONS') {
+    res.status(204).end()
+    return
   }
   next()
 })
